@@ -7,8 +7,12 @@
 
     <!-- *ngIf="selectedFilterRadioButton === 'all' || prod.is_in_inventory.toString() === selectedFilterRadioButton" -->
 
-    <div *ngFor="let prod of products" (click)="selectedProduct = prod">
+    <ng-container *ngFor="let prod of products">
         <!-- if searchText = '' all prod will be shown, else - only prod we search -->
-        <app-product [product]="prod" *ngIf="searchText === '' || prod.name.toLowerCase().includes(searchText)"></app-product>
-    </div>
+        <app-product 
+        [product]="prod" 
+        *ngIf="searchText === '' || prod.name.toLowerCase().includes(searchText)"
+        (click)="selectedProduct = prod"
+        ></app-product>
+    </ng-container>
 </div>
